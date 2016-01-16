@@ -17,8 +17,6 @@ ZEPPELIN_TAG = v0.5.5_v3
 spark:
 	docker build -t gcr.io/google_containers/spark-base base
 	docker tag gcr.io/google_containers/spark-base gcr.io/google_containers/spark-base:$(TAG)
-	docker build -t gcr.io/google_containers/spark-worker worker
-	docker tag gcr.io/google_containers/spark-worker gcr.io/google_containers/spark-worker:$(TAG)
 	docker build -t gcr.io/google_containers/spark-master master
 	docker tag gcr.io/google_containers/spark-master gcr.io/google_containers/spark-master:$(TAG)
 	docker build -t gcr.io/google_containers/spark-driver driver
@@ -36,8 +34,6 @@ zeppelin:
 push-spark: spark
 	gcloud docker push gcr.io/google_containers/spark-base
 	gcloud docker push gcr.io/google_containers/spark-base:$(TAG)
-	gcloud docker push gcr.io/google_containers/spark-worker
-	gcloud docker push gcr.io/google_containers/spark-worker:$(TAG)
 	gcloud docker push gcr.io/google_containers/spark-master
 	gcloud docker push gcr.io/google_containers/spark-master:$(TAG)
 	gcloud docker push gcr.io/google_containers/spark-driver
@@ -48,8 +44,6 @@ push-zeppelin: zeppelin
 	gcloud docker push gcr.io/google_containers/zeppelin:$(ZEPPELIN_TAG)
 
 clean:
-	docker rmi gcr.io/google_containers/spark-worker:$(TAG) || :
-	docker rmi gcr.io/google_containers/spark-worker || :
 	docker rmi gcr.io/google_containers/spark-master:$(TAG)  || :
 	docker rmi gcr.io/google_containers/spark-master || :
 	docker rmi gcr.io/google_containers/spark-driver:$(TAG) || :
