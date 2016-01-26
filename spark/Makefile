@@ -7,7 +7,7 @@ push: push-spark push-zeppelin
 # Hadoop libs at that point (we grab the 2.6.1 libs, which are
 # appropriate for 1.5.1-with-2.6). Note that you'll need to re-test
 # Zeppelin (and it may not have caught up to newest Spark).
-TAG = 1.5.1_v2
+TAG = 1.5.1_v3
 
 # To bump the Zeppelin version, bump the version in
 # zeppelin/Dockerfile and bump this tag and reset to v1.
