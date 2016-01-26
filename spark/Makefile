@@ -2,12 +2,11 @@ all: spark zeppelin
 push: push-spark push-zeppelin
 .PHONY: push push-spark push-zeppelin spark zeppelin zeppelin-build
 
-# To bump the Spark version, bump the version in base/Dockerfile, bump
-# the version in zeppelin/Dockerfile, bump this tag and reset to
-# v1. You should also double check the native Hadoop libs at that
-# point (we grab the 2.6.1 libs, which are appropriate for
-# 1.5.1-with-2.6). Note that you'll need to re-test Zeppelin (and it
-# may not have caught up to newest Spark).
+# To bump the Spark version, bump the spark_ver in Dockerfile, bump
+# this tag and reset to v1. You should also double check the native
+# Hadoop libs at that point (we grab the 2.6.1 libs, which are
+# appropriate for 1.5.1-with-2.6). Note that you'll need to re-test
+# Zeppelin (and it may not have caught up to newest Spark).
 TAG = 1.5.1_v2
 
 # To bump the Zeppelin version, bump the version in
