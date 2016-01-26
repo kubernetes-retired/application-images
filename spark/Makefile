@@ -15,7 +15,7 @@ ZEPPELIN_TAG = v0.5.5_v3
 
 spark:
 	docker build -t gcr.io/google_containers/spark .
-	docker tag gcr.io/google_containers/spark-base gcr.io/google_containers/spark:$(TAG)
+	docker tag gcr.io/google_containers/spark gcr.io/google_containers/spark:$(TAG)
 
 # This target is useful when needing to use an unreleased version of Zeppelin
 zeppelin-build:
