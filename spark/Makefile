@@ -15,8 +15,8 @@ TAG = 1.5.1_v2
 ZEPPELIN_TAG = v0.5.5_v3
 
 spark:
-	docker build -t gcr.io/google_containers/spark-base base
-	docker tag gcr.io/google_containers/spark-base gcr.io/google_containers/spark-base:$(TAG)
+	docker build -t gcr.io/google_containers/spark .
+	docker tag gcr.io/google_containers/spark-base gcr.io/google_containers/spark:$(TAG)
 
 # This target is useful when needing to use an unreleased version of Zeppelin
 zeppelin-build:
@@ -28,16 +28,16 @@ zeppelin:
 	docker tag -f gcr.io/google_containers/zeppelin gcr.io/google_containers/zeppelin:$(ZEPPELIN_TAG)
 
 push-spark: spark
-	gcloud docker push gcr.io/google_containers/spark-base
-	gcloud docker push gcr.io/google_containers/spark-base:$(TAG)
+	gcloud docker push gcr.io/google_containers/spark
+	gcloud docker push gcr.io/google_containers/spark:$(TAG)
 
 push-zeppelin: zeppelin
 	gcloud docker push gcr.io/google_containers/zeppelin
 	gcloud docker push gcr.io/google_containers/zeppelin:$(ZEPPELIN_TAG)
 
 clean:
-	docker rmi gcr.io/google_containers/spark-base:$(TAG) || :
-	docker rmi gcr.io/google_containers/spark-base || :
+	docker rmi gcr.io/google_containers/spark:$(TAG) || :
+	docker rmi gcr.io/google_containers/spark || :
 
 	docker rmi gcr.io/google_containers/zeppelin:$(ZEPPELIN_TAG) || :
 	docker rmi gcr.io/google_containers/zeppelin || :
