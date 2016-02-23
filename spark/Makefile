@@ -5,13 +5,13 @@ push: push-spark push-zeppelin
 # To bump the Spark version, bump the spark_ver in Dockerfile, bump
 # this tag and reset to v1. You should also double check the native
 # Hadoop libs at that point (we grab the 2.6.1 libs, which are
-# appropriate for 1.5.1-with-2.6). Note that you'll need to re-test
+# appropriate for 1.5.2-with-2.6). Note that you'll need to re-test
 # Zeppelin (and it may not have caught up to newest Spark).
-TAG = 1.5.1_v3
+TAG = 1.5.2_v1
 
 # To bump the Zeppelin version, bump the version in
 # zeppelin/Dockerfile and bump this tag and reset to v1.
-ZEPPELIN_TAG = v0.5.5_v3
+ZEPPELIN_TAG = v0.5.6_v1
 
 spark:
 	docker build -t gcr.io/google_containers/spark .
