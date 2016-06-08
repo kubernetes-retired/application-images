@@ -1,7 +1,7 @@
 FROM java:openjdk-8-jdk
 
-ENV hadoop_ver 2.6.1
-ENV spark_ver 1.5.2
+ENV hadoop_ver 2.6.4
+ENV spark_ver 1.6.1
 
 # Get Hadoop from US Apache mirror and extract just the native
 # libs. (Until we care about running HDFS with these containers, this
