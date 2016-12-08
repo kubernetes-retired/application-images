@@ -1,0 +1,29 @@
+FROM ubuntu
+MAINTAINER Klaus Ma <klaus1982.cn@gmail.com>
+
+RUN apt-get update && apt-get -y install openjdk-7-jdk openssh-server
+
+COPY hadoop-2.7.2.tar.gz /opt/
+
+RUN cd /opt/ && tar zxvf hadoop-2.7.2.tar.gz && rm hadoop-2.7.2.tar.gz
+
+COPY ./agent_bootstrap.sh /opt/bootstrap.sh
+COPY core-site.xml.template   /root/
+COPY yarn-site.xml.template   /root/
+COPY hdfs-site.xml.template   /root/
+COPY mapred-site.xml.template /root/
+
+COPY .ssh /root/.ssh
+
+RUN chmod +x /opt/bootstrap.sh
+
+# Hdfs ports
+EXPOSE 31010 50020 50070 50075 50090 8020 9000
+# Mapred ports
+EXPOSE 19888
+#Yarn ports
+EXPOSE 8030 8031 8032 8033 8040 8042 8088
+#Other ports
+EXPOSE 49707 2122
+
+ENTRYPOINT /opt/bootstrap.sh
