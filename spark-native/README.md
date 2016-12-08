@@ -4,7 +4,12 @@ The repository this points to k8s4spark/spark.
 
 1. Build your spark distribution (typically from sources) with kubernetes support.
 
+```
 ./dev/make-distribution.sh --tgz -Pkubernetes -Phadoop-2.4 -Darguments="-DskipTests" -Dhadoop.version=2.4.0
+```
+
+For further details, refer to: https://github.com/foxish/spark/tree/k8s-support/kubernetes
+
 
 2. Build and push the docker image by running the following:
 
